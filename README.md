@@ -3,9 +3,10 @@ This repo is to practice implementing data structures &amp; algorithms in Python
 
 ## This repo covers: ##
 1. Basic Data Structures
-    1. Queue
-    2. Dequeue
-    3. Lists
+    1. Stack
+    2. Queue
+    3. Dequeue
+    4. Lists
 2. Recursion
 3. Sorting &amp; Searching
     1. Searching

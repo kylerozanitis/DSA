@@ -1,4 +1,5 @@
-""" This file is to practice implementing the basic linear data structure stack """
+""" This file is to practice implementing the basic linear data structure stack,
+which maintains the Last-In First-Out ordering property (LIFO). """
 
 class Stack():
     def __init__(self):
