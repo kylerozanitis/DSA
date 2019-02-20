@@ -74,6 +74,20 @@ class LinkedList:
                 previous = current
                 current = current.get_next()
 
+    def append_node(self, value):
+        # Implemented with an algorithmic complexity of O(n)
+        current = self.head
+        previous = None
+
+        while current != None:
+            if previous == None:
+                previous = current
+                current = current.get_next()
+
+        new_node = Node(value)
+        previous.set_next(new_node)
+        return True
+
 
 linked_list = LinkedList()
 print(linked_list.is_empty())
@@ -87,3 +101,4 @@ print(linked_list.search(17))
 print(linked_list.remove_node(13))
 print(linked_list.remove_node(17))
 print(linked_list.search(17))
+print(linked_list.append_node(16))
