@@ -10,6 +10,8 @@ This repo is to practice implementing data structures &amp; algorithms in Python
     3. Dequeue
         1. Palindrome Checker
     4. Lists
+        1. Unordered List / Linked List
+        2. Ordered List
 2. Recursion
 3. Sorting &amp; Searching
     1. Searching
