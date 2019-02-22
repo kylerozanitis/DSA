@@ -80,14 +80,34 @@ class LinkedList:
         previous = None
 
         while current != None:
-            if previous == None:
-                previous = current
-                current = current.get_next()
+            previous = current
+            current = current.get_next()
 
         new_node = Node(value)
         previous.set_next(new_node)
         return True
 
+    def insert_node(self, value, index):
+        previous = None
+        current = self.head
+        position = 0
+
+        while position != index:
+            previous = current
+            current = current.get_next()
+            position += 1
+
+        new_node = Node(value)
+        if position == 0:
+            new_node.set_next(current)
+            self.head = new_node
+        elif current == None:
+            previous.set_next(new_node)
+        else:
+            new_node.set_next(current)
+            previous.set_next(new_node)
+
+        return True
 
 class ImprovedLinkedList:
     """ Linked List implementation with append function as O(1) """
@@ -159,31 +179,30 @@ class ImprovedLinkedList:
         return True
 
 
-# linked_list = LinkedList()
-# print(linked_list.is_empty())
-# linked_list.add_node(13)
-# linked_list.add_node(15)
-# linked_list.add_node(17)
-# print(linked_list.is_empty())
-# print(linked_list.search(13))
-# print(linked_list.search(14))
-# print(linked_list.search(17))
-# print(linked_list.remove_node(13))
-# print(linked_list.remove_node(17))
-# print(linked_list.search(17))
-# print(linked_list.append_node(16))
+linked_list = LinkedList()
+print(linked_list.is_empty())
+linked_list.add_node(13)
+linked_list.add_node(15)
+linked_list.add_node(17)
+print(linked_list.is_empty())
+print(linked_list.search(13))
+print(linked_list.append_node(16))
+print(linked_list.insert_node(3, 0))
+print(linked_list.insert_node(5, 5))
+print(linked_list.insert_node(7, 3))
 
-new_linked_list = ImprovedLinkedList()
-print(new_linked_list.is_empty())
-new_linked_list.add_node(13)
-new_linked_list.add_node(15)
-new_linked_list.add_node(17)
-print(new_linked_list.is_empty())
-print(new_linked_list.search(13))
-print(new_linked_list.search(14))
-print(new_linked_list.search(17))
-print(new_linked_list.remove_node(13))
-print(new_linked_list.remove_node(17))
-print(new_linked_list.search(17))
-print(new_linked_list.append_node(16))
-print(new_linked_list.search(16))
+
+# new_linked_list = ImprovedLinkedList()
+# print(new_linked_list.is_empty())
+# new_linked_list.add_node(13)
+# new_linked_list.add_node(15)
+# new_linked_list.add_node(17)
+# print(new_linked_list.is_empty())
+# print(new_linked_list.search(13))
+# print(new_linked_list.search(14))
+# print(new_linked_list.search(17))
+# print(new_linked_list.remove_node(13))
+# print(new_linked_list.remove_node(17))
+# print(new_linked_list.search(17))
+# print(new_linked_list.append_node(16))
+# print(new_linked_list.search(16))
