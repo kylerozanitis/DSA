@@ -75,7 +75,7 @@ class LinkedList:
                 current = current.get_next()
 
     def append_node(self, value):
-        # Implemented with an algorithmic complexity of O(n)
+        """ Implemented with an algorithmic complexity of O(n) """
         current = self.head
         previous = None
 
@@ -89,16 +89,101 @@ class LinkedList:
         return True
 
 
-linked_list = LinkedList()
-print(linked_list.is_empty())
-linked_list.add_node(13)
-linked_list.add_node(15)
-linked_list.add_node(17)
-print(linked_list.is_empty())
-print(linked_list.search(13))
-print(linked_list.search(14))
-print(linked_list.search(17))
-print(linked_list.remove_node(13))
-print(linked_list.remove_node(17))
-print(linked_list.search(17))
-print(linked_list.append_node(16))
+class ImprovedLinkedList:
+    """ Linked List implementation with append function as O(1) """
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def is_empty(self):
+        return self.head == None
+
+    def add_node(self, value):
+        new_node = Node(value)
+        new_node.set_next(self.head)
+        self.head = new_node
+
+        if self.tail == None:
+            self.tail = new_node
+
+    def size(self):
+        current = self.head
+        count = 0
+
+        while current != None:
+            count += 1
+            current = current.get_next()
+
+        return count
+
+    def search(self, node):
+        current = self.head
+
+        while current != None:
+            if current.get_data() == node:
+                return True
+            else:
+                current = current.get_next()
+
+        return False
+
+    def remove_node(self, node):
+        """ Method now includes functionality to update tail of linked list """
+        previous = None
+        current = self.head
+
+        while current != None:
+            if current.get_data() == node:
+                if previous == None:
+                    self.head = current.get_next()
+                elif current.get_next() == None:
+                    self.tail = previous
+                    previous.set_next(current.get_next())
+                else:
+                    previous.set_next(current.get_next())
+                
+                return True
+
+            else:
+                # This process is referred to as inch-worming
+                previous = current
+                current = current.get_next()
+
+    def append_node(self, value):
+        """ Implemented with an algorithmic complexity of O(1) """
+        current = self.tail
+        
+        new_node = Node(value)
+        current.set_next(new_node)
+        self.tail = new_node
+        return True
+
+
+# linked_list = LinkedList()
+# print(linked_list.is_empty())
+# linked_list.add_node(13)
+# linked_list.add_node(15)
+# linked_list.add_node(17)
+# print(linked_list.is_empty())
+# print(linked_list.search(13))
+# print(linked_list.search(14))
+# print(linked_list.search(17))
+# print(linked_list.remove_node(13))
+# print(linked_list.remove_node(17))
+# print(linked_list.search(17))
+# print(linked_list.append_node(16))
+
+new_linked_list = ImprovedLinkedList()
+print(new_linked_list.is_empty())
+new_linked_list.add_node(13)
+new_linked_list.add_node(15)
+new_linked_list.add_node(17)
+print(new_linked_list.is_empty())
+print(new_linked_list.search(13))
+print(new_linked_list.search(14))
+print(new_linked_list.search(17))
+print(new_linked_list.remove_node(13))
+print(new_linked_list.remove_node(17))
+print(new_linked_list.search(17))
+print(new_linked_list.append_node(16))
+print(new_linked_list.search(16))
